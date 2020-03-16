@@ -10,6 +10,10 @@ const ToDo = () => {
     setToDo(e.target.value);
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
+
   return (
     <div>
       <form>
@@ -20,7 +24,7 @@ const ToDo = () => {
           value={newToDo}
           onChange={handleChanges}
         />
-        <button>Create To-Do</button>
+        <button onSubmit={handleSubmit}>Create To-Do</button>
       </form>
     </div>
   );
