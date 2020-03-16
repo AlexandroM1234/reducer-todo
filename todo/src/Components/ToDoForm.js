@@ -5,7 +5,6 @@ import { reducer, initialState } from "../Reducers/reducer";
 const ToDo = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [newToDo, setToDo] = useState("");
-
   const handleChanges = e => {
     setToDo(e.target.value);
   };
@@ -16,7 +15,7 @@ const ToDo = () => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>To Do</label>
         <input
           name="newToDoTitle"
@@ -24,7 +23,13 @@ const ToDo = () => {
           value={newToDo}
           onChange={handleChanges}
         />
-        <button onSubmit={handleSubmit}>Create To-Do</button>
+        <button
+          onClick={() => {
+            dispatch({ type: "ADD_TODO", payload: setToDo });
+          }}
+        >
+          Create To-Do
+        </button>
       </form>
     </div>
   );
